@@ -13,10 +13,10 @@ services:
             JOBS_DB_PASSWORD: $$cap_app_db_password
             JOBS_DB_DB_NAME: $$cap_app_db_name
             JOBS_DB_PORT: '5432'
-            DEST_TRANSFORM_URL: srv-captain--$$cap_appname-d-transformer:9090
             CONFIG_BACKEND_URL: $$cap_app_backend_url
             WORKSPACE_TOKEN: $$cap_rudder_workspace_token
-            STATSD_SERVER_URL: srv-captain--$$cap_appname-metrics-exporter:9125
+            DEST_TRANSFORM_URL: http://srv-captain--$$cap_appname-d-transformer:9090
+            STATSD_SERVER_URL: http://srv-captain--$$cap_appname-metrics-exporter:9125
             RSERVER_GATEWAY_WEBHOOK_SOURCE_LIST_FOR_PARSING_PARAMS: Shopify
         caproverExtra:
             containerHttpPort: '8080'
