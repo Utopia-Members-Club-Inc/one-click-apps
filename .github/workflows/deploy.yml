@@ -1,8 +1,8 @@
 name: Publish One Click Apps
 
 on:
-    push:
-        branches: [master]
+    # push:
+    #     branches: [main]
     workflow_dispatch:
 
 jobs:
@@ -13,6 +13,7 @@ jobs:
             - uses: actions/setup-node@v1
               with:
                   node-version: 20
-            - run: npm ci && npm run publish
-              env:
-                  GITHUB_PERSONAL_TOKEN: ${{secrets.GITHUB_PERSONAL_TOKEN}}
+
+            - uses: actions/configure-pages@v5
+            - run: npm run build
+            - uses: actions/deploy-pages@v4
