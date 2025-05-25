@@ -54,7 +54,7 @@ caproverOneClickApp:
     variables:
         - id: $$cap_rudder_workspace_token
           label: RudderStack Workspace Token
-          description: See https://app.rudderstack.com/settings/workspace/token
+          description: See https://app.rudderstack.com/workspace
 
         - id: $$cap_app_version
           label: RudderStack Version
