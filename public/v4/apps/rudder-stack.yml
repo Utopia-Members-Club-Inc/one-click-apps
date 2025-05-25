@@ -30,6 +30,8 @@ services:
             POSTGRES_USER: $$cap_app_db_username
             POSTGRES_PASSWORD: $$cap_app_db_password
             POSTGRES_DB: $$cap_app_db_name
+        caproverExtra:
+            notExposeAsWebApp: true # Internal service
 
     $$cap_appname-d-transformer:
         image: rudderstack/rudder-transformer:$$cap_rudder_transformer_version
