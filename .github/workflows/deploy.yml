@@ -23,7 +23,7 @@ jobs:
 
             - run: npm ci
             - run: npm run build
-            - run: echo "caprover.com" > dist/index.html
+            - run: echo "utopia.spot" > dist/index.html
             - name: Deploy to gh-pages branch
               uses: peaceiris/actions-gh-pages@v4
               with:
