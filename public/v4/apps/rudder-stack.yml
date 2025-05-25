@@ -35,20 +35,20 @@ services:
             POSTGRES_PASSWORD: $$cap_app_db_password
             POSTGRES_DB: $$cap_app_db_name
 
-        $$cap_appname-d-transformer:
-            image: rudderstack/rudder-transformer:$$cap_rudder_transformer_version
-            depends_on:
-                - $$cap_appname-metrics-exporter
-            environment:
-                STATSD_SERVER_HOST: srv-captain--$$cap_appname-metrics-exporter
-                STATSD_SERVER_PORT: '9125'
-            caproverExtra:
-                notExposeAsWebApp: true # Internal service
+    $$cap_appname-d-transformer:
+        image: rudderstack/rudder-transformer:$$cap_rudder_transformer_version
+        depends_on:
+            - $$cap_appname-metrics-exporter
+        environment:
+            STATSD_SERVER_HOST: srv-captain--$$cap_appname-metrics-exporter
+            STATSD_SERVER_PORT: '9125'
+        caproverExtra:
+            notExposeAsWebApp: true # Internal service
 
-        $$cap_appname-metrics-exporter:
-            image: prom/statsd-exporter:$$cap_metrics_exporter_version
-            caproverExtra:
-                notExposeAsWebApp: true # Internal service
+    $$cap_appname-metrics-exporter:
+        image: prom/statsd-exporter:$$cap_metrics_exporter_version
+        caproverExtra:
+            notExposeAsWebApp: true # Internal service
 
 caproverOneClickApp:
     variables:
