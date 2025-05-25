@@ -9,15 +9,19 @@ services:
             - $$cap_appname-d-transformer
         environment:
             JOBS_DB_HOST: srv-captain--$$cap_appname-db
-            JOBS_DB_USERNAME: $$cap_app_db_username
+            JOBS_DB_USER: $$cap_app_db_username
             JOBS_DB_PASSWORD: $$cap_app_db_password
-            JOBS_DB_NAME: $$cap_app_db_name
+            JOBS_DB_DB_NAME: $$cap_app_db_name
             JOBS_DB_PORT: '5432'
             DEST_TRANSFORM_URL: srv-captain--$$cap_appname-d-transformer:9090
             CONFIG_BACKEND_URL: $$cap_app_backend_url
             WORKSPACE_TOKEN: $$cap_rudder_workspace_token
             STATSD_SERVER_URL: srv-captain--$$cap_appname-metrics-exporter:9125
             RSERVER_GATEWAY_WEBHOOK_SOURCE_LIST_FOR_PARSING_PARAMS: Shopify
+        entrypoint: sh
+        command:
+            - -c
+            - '/wait-for srv-captain--$$cap_appname-db:5432 --timeout=300 -- /rudder-server'
         caproverExtra:
             containerHttpPort: '8080'
 
