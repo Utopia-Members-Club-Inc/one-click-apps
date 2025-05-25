@@ -16,7 +16,7 @@ services:
             CONFIG_BACKEND_URL: $$cap_app_backend_url
             WORKSPACE_TOKEN: $$cap_rudder_workspace_token
             DEST_TRANSFORM_URL: http://srv-captain--$$cap_appname-d-transformer:9090
-            STATSD_SERVER_URL: http://srv-captain--$$cap_appname-metrics-exporter:9125
+            STATSD_SERVER_URL: srv-captain--$$cap_appname-metrics-exporter:9125
             RSERVER_GATEWAY_WEBHOOK_SOURCE_LIST_FOR_PARSING_PARAMS: Shopify
         caproverExtra:
             containerHttpPort: '8080'
