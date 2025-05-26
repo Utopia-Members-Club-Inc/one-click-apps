@@ -5,8 +5,9 @@ services:
             dockerfileLines:
                 - FROM telegraf:1.34.4
                 - RUN apt-get -y update; apt-get -y install curl
-                - RUN curl -L https://raw.githubusercontent.com/Utopia-Members-Club-Inc/one-click-apps/refs/heads/main/conf/telegraf.conf > /etc/telegraf/telegraf.conf
-                - CMD ["telegraf", "-config", "/etc/telegraf/telegraf.conf"]
+                - RUN curl -L https://raw.githubusercontent.com/Utopia-Members-Club-Inc/one-click-apps/refs/heads/main/conf/telegraf.conf > telegraf.conf
+                - RUN cat telegraf.conf
+                - CMD ["telegraf", "-config", "telegraf.conf"]
         restart: always
 caproverOneClickApp:
     instructions:
