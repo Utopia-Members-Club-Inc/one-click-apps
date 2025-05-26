@@ -10,7 +10,7 @@ services:
                 - CMD ["telegraf", "-config", "telegraf.conf"]
         restart: always
         environment:
-            - CONF
+            - CONF: "CONF"
 caproverOneClickApp:
     instructions:
         start: Telegraf is a plugin-driven server agent for collecting & reporting metrics.
